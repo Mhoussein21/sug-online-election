@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMR. ADAM IBRAHIM (ALKALI) | SUG President</title>
+    <style>
+        :root {
+            --green: #0b3d2e;
+            --gold: #c9a227;
+            --white: #ffffff;
+            --gray: #f4f4f4;
+            --dark: #1a1a1a;
+            --light-green: #e8f5f0;
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* ================= HAMBURGER MENU & NAVIGATION ================= */
+        nav {
+            background: var(--dark);
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .nav-links a.cta-button {
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: bold;
+            padding: 8px 20px;
+        }
+
+        .nav-links a.cta-button:hover {
+            background: #d4b123;
+            color: var(--dark);
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--white);
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            height: calc(85vh - 70px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomEffect 20s ease-in-out infinite;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 61, 46, 0.75);
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            padding: 30px;
+            max-width: 900px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        /* VOTE NOW BUTTON WITH PULSE ANIMATION */
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            margin: 15px 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        /* PULSE ANIMATION FOR VOTE NOW BUTTON */
+        @keyframes pulse {
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); 
+            }
+            70% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); 
+            }
+            100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); 
+            }
+        }
+
+        /* Apply pulse to VOTE NOW button */
+        .cta-button.vote-now-btn {
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h3 {
+            color: var(--green);
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ================= FADE-IN ANIMATIONS FOR CARDS ================= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays for cards */
+        .cards-container .card:nth-child(1) { transition-delay: 0.1s; }
+        .cards-container .card:nth-child(2) { transition-delay: 0.2s; }
+        .cards-container .card:nth-child(3) { transition-delay: 0.3s; }
+        .cards-container .card:nth-child(4) { transition-delay: 0.4s; }
+
+        /* For testimonials */
+        .testimonials .testimonial:nth-child(1) { transition-delay: 0.1s; }
+        .testimonials .testimonial:nth-child(2) { transition-delay: 0.2s; }
+        .testimonials .testimonial:nth-child(3) { transition-delay: 0.3s; }
+
+        /* For vote steps */
+        .vote-steps .vote-step:nth-child(1) { transition-delay: 0.1s; }
+        .vote-steps .vote-step:nth-child(2) { transition-delay: 0.2s; }
+        .vote-steps .vote-step:nth-child(3) { transition-delay: 0.3s; }
+        .vote-steps .vote-step:nth-child(4) { transition-delay: 0.4s; }
+
+        /* ================= VISION & WHY VOTE CARDS ================= */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--gold);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--green);
+        }
+
+        .card h4 {
+            color: var(--green);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ================= CONTACT SECTION ================= */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-card h4 {
+            color: var(--green);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            display: block;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .contact-value {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            font-size: 1.05rem;
+        }
+
+        .contact-value:hover {
+            color: var(--green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--green);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-top: 20px;
+        }
+
+        /* ================= ENDORSEMENTS ================= */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--green);
+            text-align: right;
+        }
+
+        /* ================= HOW TO VOTE ================= */
+        .vote-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .vote-step {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            margin: 25px 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ================= MOBILE RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 7px 10px;
+                margin: 0 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links a {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                font-size: 1rem;
+            }
+            
+            .nav-links a.cta-button {
+                margin-top: 15px;
+                border-radius: 5px;
+                width: 90%;
+                background: var(--gold);
+                color: var(--dark);
+                font-weight: bold;
+                border: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 60px 15px;
+            }
+            
+            .contact-container, .cards-container, .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: calc(80vh - 70px);
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+                max-width: 250px;
+            }
+            
+            section h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- STICKY NAVIGATION WITH HAMBURGER -->
+    <nav>
+        <div class="hamburger">☰</div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#academic">Academic</a>
+            <a href="#vision">Vision</a>
+            <a href="#endorsements">Endorsements</a>
+            <a href="#contact">Contact</a>
+            <a href="#vote">How to Vote</a>
+            <a href="#updates">Updates</a>
+            <a href="#vote" class="cta-button vote-now-btn">VOTE NOW</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="images/banner.jpg" alt="Campaign Banner" class="hero-img">
+        <div class="overlay"></div>
+        <div class="hero-text">
+            <h1>COMR. ADAM IBRAHIM (ALKALI)</h1>
+            <h2>Your Candidate for SUG President<br>College of Nursing Science, Madobi Campus</h2>
+            <div class="hero-cta">
+                <a href="#vote" class="cta-button vote-now-btn">VOTE NOW</a>
+                <a href="#vision" class="cta-button secondary">VIEW MANIFESTO</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h3>About the Candidate</h3>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; text-align: center; margin-bottom: 25px;">I am a committed student leader of the College of Nursing Science, Madobi Campus, contesting for the office of Student Union Government President with a clear mission: to serve students with integrity, transparency, and responsibility.</p>
+            <p style="font-size: 1.1rem; text-align: center;">Leadership to me is service — listening to students, representing their interests, and working tirelessly to improve campus life.</p>
+        </div>
+    </section>
+
+    <!-- ACADEMIC JOURNEY -->
+    <section id="academic" style="background: var(--light-green);">
+        <h3>Academic Journey</h3>
+        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: var(--card-shadow);">
+            <p>Comr. Adam Ibrahim Alkali was born in 2003 in Tudun Wada Local Government Area of Kano State. His educational journey demonstrates resilience and commitment to learning through various institutions:</p>
+            
+            <div style="margin-top: 25px;">
+                <h4 style="color: var(--green); margin-bottom: 15px;">Educational Timeline</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2009-2010:</strong> Model Primary School (Nursery)
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2011-2017:</strong> Imam Malik Nursery and Primary School
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2017-2020:</strong> Imam Malik Science and Tahfiz College (Junior Secondary)
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2020-2023:</strong> Science College Dawakin Tofa (Senior Secondary)
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2023-2024:</strong> College of Advanced and Remedial Studies (CAS), Tudun Wada
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                        <strong>2024-Present:</strong> College of Nursing and Midwifery, Madobi Campus (Community Nursing)
+                    </li>
+                </ul>
+            </div>
+        </div>
+   
