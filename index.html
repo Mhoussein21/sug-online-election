@@ -138,7 +138,6 @@
             margin-bottom: 25px;
         }
 
-        /* VOTE NOW BUTTON WITH PULSE ANIMATION */
         .cta-button {
             display: inline-block;
             background: var(--gold);
@@ -151,28 +150,6 @@
             font-size: 1.1rem;
             transition: all 0.3s;
             border: 2px solid var(--gold);
-        }
-
-        /* PULSE ANIMATION FOR VOTE NOW BUTTON */
-        @keyframes pulse {
-            0% { 
-                transform: scale(1); 
-                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); 
-            }
-            70% { 
-                transform: scale(1.05); 
-                box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); 
-            }
-            100% { 
-                transform: scale(1); 
-                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); 
-            }
-        }
-
-        /* Apply pulse to VOTE NOW button */
-        .cta-button.vote-now-btn {
-            animation: pulse 2s infinite;
-            display: inline-block;
         }
 
         .cta-button:hover {
@@ -196,6 +173,45 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        /* ================= VOTE BUTTON PULSE ANIMATION ================= */
+        @keyframes pulse {
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.7); 
+            }
+            70% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 0 15px rgba(201, 162, 39, 0); 
+            }
+            100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); 
+            }
+        }
+
+        /* Apply to the main hero button */
+        .hero-cta .cta-button:first-child {
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        /* Optional: Add hover effect that stops pulse and grows */
+        .hero-cta .cta-button:first-child:hover {
+            animation: none;
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Apply to the nav button as well */
+        .nav-links a.cta-button {
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links a.cta-button:hover {
+            animation: none;
+            transform: scale(1.05);
         }
 
         /* ================= SECTIONS ================= */
@@ -225,35 +241,6 @@
             background: var(--gold);
             border-radius: 2px;
         }
-
-        /* ================= FADE-IN ANIMATIONS FOR CARDS ================= */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered animation delays for cards */
-        .cards-container .card:nth-child(1) { transition-delay: 0.1s; }
-        .cards-container .card:nth-child(2) { transition-delay: 0.2s; }
-        .cards-container .card:nth-child(3) { transition-delay: 0.3s; }
-        .cards-container .card:nth-child(4) { transition-delay: 0.4s; }
-
-        /* For testimonials */
-        .testimonials .testimonial:nth-child(1) { transition-delay: 0.1s; }
-        .testimonials .testimonial:nth-child(2) { transition-delay: 0.2s; }
-        .testimonials .testimonial:nth-child(3) { transition-delay: 0.3s; }
-
-        /* For vote steps */
-        .vote-steps .vote-step:nth-child(1) { transition-delay: 0.1s; }
-        .vote-steps .vote-step:nth-child(2) { transition-delay: 0.2s; }
-        .vote-steps .vote-step:nth-child(3) { transition-delay: 0.3s; }
-        .vote-steps .vote-step:nth-child(4) { transition-delay: 0.4s; }
 
         /* ================= VISION & WHY VOTE CARDS ================= */
         .cards-container {
@@ -574,6 +561,15 @@
             body {
                 padding-top: 70px;
             }
+
+            /* Adjust pulse for mobile */
+            .hero-cta .cta-button:first-child {
+                animation: pulse 2.5s infinite;
+            }
+            
+            .nav-links a.cta-button {
+                animation: pulse 2.5s infinite;
+            }
         }
 
         @media (max-width: 480px) {
@@ -589,6 +585,10 @@
             
             section h3 {
                 font-size: 1.8rem;
+            }
+            
+            .hero-cta .cta-button:first-child {
+                animation: pulse 3s infinite;
             }
         }
     </style>
@@ -607,7 +607,7 @@
             <a href="#contact">Contact</a>
             <a href="#vote">How to Vote</a>
             <a href="#updates">Updates</a>
-            <a href="#vote" class="cta-button vote-now-btn">VOTE NOW</a>
+            <a href="#vote" class="cta-button">VOTE NOW</a>
         </div>
     </nav>
 
@@ -619,7 +619,7 @@
             <h1>COMR. ADAM IBRAHIM (ALKALI)</h1>
             <h2>Your Candidate for SUG President<br>College of Nursing Science, Madobi Campus</h2>
             <div class="hero-cta">
-                <a href="#vote" class="cta-button vote-now-btn">VOTE NOW</a>
+                <a href="#vote" class="cta-button">VOTE NOW</a>
                 <a href="#vision" class="cta-button secondary">VIEW MANIFESTO</a>
             </div>
         </div>
@@ -666,11 +666,11 @@
         </div>
     </section>
 
-    <!-- VISION CARDS WITH FADE-IN -->
+    <!-- VISION CARDS -->
     <section id="vision">
         <h3>Vision & Manifesto</h3>
         <div class="cards-container">
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">🎓</div>
                 <h4>Academic Excellence</h4>
                 <ul>
@@ -681,7 +681,7 @@
                 </ul>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">🤝</div>
                 <h4>Student Welfare</h4>
                 <ul>
@@ -692,7 +692,7 @@
                 </ul>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">🏫</div>
                 <h4>Campus Development</h4>
                 <ul>
@@ -705,29 +705,29 @@
         </div>
     </section>
 
-    <!-- WHY VOTE CARDS WITH FADE-IN -->
+    <!-- WHY VOTE CARDS -->
     <section style="background: var(--light-green);">
         <h3>Why Vote For Me?</h3>
         <div class="cards-container">
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">👂</div>
                 <h4>I Listen First</h4>
                 <p>Before making decisions, I consult widely with students to understand their needs and concerns.</p>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">🤲</div>
                 <h4>Transparent Leadership</h4>
                 <p>I believe in open communication and will provide regular updates on SUG activities and finances.</p>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">💪</div>
                 <h4>Proven Resilience</h4>
                 <p>My academic journey shows my ability to overcome challenges - a quality needed in student leadership.</p>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-icon">📞</div>
                 <h4>Always Accessible</h4>
                 <p>I will maintain multiple channels for students to reach me directly with their issues and ideas.</p>
@@ -738,21 +738,21 @@
         </div>
     </section>
 
-    <!-- ENDORSEMENTS WITH FADE-IN -->
+    <!-- ENDORSEMENTS -->
     <section id="endorsements">
         <h3>Endorsements & Testimonials</h3>
         <div class="testimonials">
-            <div class="testimonial fade-in">
+            <div class="testimonial">
                 <p class="testimonial-text">"Adam has shown exceptional leadership qualities during our time together at Science College. His dedication to serving others is genuine and I believe he will make an excellent SUG President."</p>
                 <p class="testimonial-author">- Mubarak Abdullahi Shuaibu<br><small>DAKSU Election Winner</small></p>
             </div>
             
-            <div class="testimonial fade-in">
+            <div class="testimonial">
                 <p class="testimonial-text">"I've known Adam for years. His resilience through various academic challenges shows he has the determination needed to fight for student rights and welfare."</p>
                 <p class="testimonial-author">- A Fellow Nursing Student</p>
             </div>
             
-            <div class="testimonial fade-in">
+            <div class="testimonial">
                 <p class="testimonial-text">"What impresses me most about Adam is his willingness to listen. In a leader, this quality is more important than always having the answers."</p>
                 <p class="testimonial-author">- Former Classmate</p>
             </div>
@@ -830,32 +830,33 @@
         </div>
     </section>
 
-    <!-- HOW TO VOTE WITH FADE-IN -->
+    <!-- HOW TO VOTE -->
     <section id="vote">
         <h3>How & Where to Vote</h3>
         <div class="vote-steps">
-            <div class="vote-step fade-in">
+            <div class="vote-step">
                 <div class="step-number">1</div>
                 <h4>Check Your Eligibility</h4>
                 <p>Ensure you're a registered student of College of Nursing Science, Madobi Campus with a valid student ID.</p>
             </div>
             
-            <div class="vote-step fade-in">
+            <div class="vote-step">
                 <div class="step-number">2</div>
                 <h4>Know the Date</h4>
-                <p>Election Day: <strong>January 5, 2026</strong><br>Time: <strong>8:00 AM - 4:00 PM</strong></p>
+                <p>Election Day: <strongTo be Announce</strong><br>Time: <strong>8:00 AM - 4:00 PM</strong></p>
             </div>
             
-            <div class="vote-step fade-in">
+            <div class="vote-step">
                 <div class="step-number">3</div>
                 <h4>Bring Required Items</h4>
                 <p>Your valid student ID card and voter's slip (if applicable).</p>
             </div>
             
-            <div class="vote-step fade-in">
+            <div class="vote-step">
                 <div class="step-number">4</div>
                 <h4>Cast Your Vote</h4>
-                <p>Proceed to the designated voting center <strong>(Sa'idu Fage Hall)</strong>.</p>
+                <p>Proceed to the designated voting center <strong>(sa'idu fage) hall.</strong>
+</p>
             </div>
         </div>
         
@@ -868,12 +869,12 @@
         </div>
     </section>
 
-    <!-- UPDATES SECTION WITH FADE-IN -->
+    <!-- UPDATES SECTION -->
     <section id="updates" style="background: var(--light-green);">
         <h3>Latest Updates</h3>
         
         <div class="cards-container">
-            <div class="card fade-in">
+            <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span style="background: var(--gold); color: var(--dark); padding: 5px 15px; border-radius: 20px; font-weight: bold;">Jan 1, 2026</span>
                     <span style="color: var(--green);"><i class="fas fa-bullhorn"></i> Announcement</span>
@@ -885,7 +886,7 @@
                 </div>
             </div>
             
-            <div class="card fade-in">
+            <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span style="background: var(--gold); color: var(--dark); padding: 5px 15px; border-radius: 20px; font-weight: bold;">Jan 3, 2026</span>
                     <span style="color: var(--green);"><i class="fas fa-handshake"></i> Congratulations</span>
@@ -987,24 +988,6 @@
                 }
             });
         });
-
-        // ======= FADE-IN ANIMATION ON SCROLL =======
-        function fadeInOnScroll() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Run on page load and scroll
-        window.addEventListener('load', fadeInOnScroll);
-        window.addEventListener('scroll', fadeInOnScroll);
     </script>
 </body>
 </html>
